@@ -9,7 +9,7 @@ $this->section( 'content' );
 <!-- Grid Bootstrap -->
     <div class="container">
         <div class="row">
-            <div class="col-2">
+            <div class="col-1">
 
             </div>
 
@@ -25,25 +25,28 @@ $this->section( 'content' );
                         <th scope="col">Email</th>
                         <th scope="col">Created at</th>
                         <th scope="col">Updated at</th>
-
                     </tr>
                     </thead>
                     <tbody>
+                    <?php if ( isset( $users ) )
+                        foreach ( $users as $user ):
+                        ?>
                     <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <th scope="row"><?= $user->id; ?></th>
+                        <td><?= $user->firstname; ?></td>
+                        <td><?= $user->lastname; ?></td>
+                        <td><?= $user->email; ?></td>
+                        <td><?= $user->created_at; ?></td>
+                        <td><?= $user->updated_at; ?></td>
                     </tr>
+                        <?php endforeach;?>
                     </tbody>
                 </table>
 
                 <!-- Table HTML End-->
             </div>
 
-            <div class="col-2">
+            <div class="col-1">
 
             </div>
 

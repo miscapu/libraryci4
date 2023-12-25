@@ -5,7 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->match([ 'get', 'post' ],'/', 'UserController::index');
-$routes->match([ 'get', 'post' ],'/register', 'UserController::register');
-$routes->get( '/dashboard', 'DashboardController::index' );
+$routes->match([ 'get', 'post' ],'/', 'UserController::index', [ 'filter'  =>  'noauth' ]);
+$routes->match([ 'get', 'post' ],'/register', 'UserController::register', [ 'filter'   =>  'noauth' ]);
+$routes->get( '/dashboard', 'DashboardController::index', [ 'filter'   =>  'auth' ] );
+$routes->get( '/logout', 'UserController::logout' );
+
 
