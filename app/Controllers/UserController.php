@@ -15,9 +15,60 @@ class UserController extends BaseController
             'title' =>  'Login'
         ];
 
+        if ( $this->request->getMethod() == 'post' ){
+            $rules  =   [
+                'emailFrm'  =>  'required|min_length[3]|max_length[50]|valid_email',
+                'pwdFrm'    =>  'required|min_length[4]|max_length[255]|validateUser[emailFrm,pwdFrm]',
+            ];
+            $messages   =   [
+                'emailFrm'  =>  [
+                    'required'      =>  'Please, enter your email',
+                    'min_length'    =>  'Please, enter more than 3 characters',
+                    'max_length'    =>  'Please, enter less than 50 characters',
+                ],
+
+                'pwdFrm'  =>  [
+                    'required'      =>  'Please, enter your password',
+                    'min_length'    =>  'Please, enter more than 4 characters',
+                    'max_length'    =>  'Please, enter less than 255 characters',
+                    'validateUser'   =>  'Please, enter valid user',
+                ],
+            ];
+
+            if ( ! $this->validate( $rules, $messages ) )
+            {
+                $data[ 'validation' ]   =   $this->validator;
+            }else{
+                $userModel  =   new UserModel();
+                $user       =   $userModel->where( 'email', $this->request->getVar( 'emailFrm' ) )
+                                          ->first();
+
+                $this->setUserSession( $user );
+                return redirect()->to( '/dashboard' );
+
+            }
+        }
+
         $renderT    =   \Config\Services::renderer();
         return $renderT->setData( $data )->render( 'Pages/Login' );
     }
+
+
+
+    private function setUserSession( $user )
+    {
+        $data   =   [
+            'id'            =>  $user[ 'id' ],
+            'firstname'     =>  $user[ 'firstname' ],
+            'lastname'      =>  $user[ 'lastname' ],
+            'email'         =>  $user[ 'email' ],
+            'isLoggedIn'    =>  true
+        ];
+
+        session()->set( $data );
+        return true;
+    }
+
 
     public function register()
     {

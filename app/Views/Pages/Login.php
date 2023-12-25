@@ -2,6 +2,26 @@
 $this->extend( 'Layouts/main' );
 
 $this->section( 'content' );
+
+/**
+ * Validations
+ * @author MiSCapu
+ * @since 24.12.2023
+ */
+if ( isset( $validation ) ){
+    $validation =   \Config\Services::validation();
+
+    if ( $validation->hasError( 'emailFrm' ) ){
+        $errorEmail =   $validation->getError( 'emailFrm' );
+    }
+
+    if ( $validation->hasError( 'pwdFrm' ) ){
+        $errorPassword =   $validation->getError( 'pwdFrm' );
+    }
+
+
+}
+
 ?>
 
     <!-- Dashboard Content -->
@@ -20,15 +40,27 @@ $this->section( 'content' );
                 <h1 class="modal-title text-center py-4"><?= isset( $title ) ? esc( $title ) : ""; ?></h1>
                 <!-- Title -->
 
+                <?php
+                    if ( session()->get( 'success' ) ){
+                        ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= session()->get( 'success' ); ?>
+                        </div>
+                            <?php
+                    }
+                ?>
+
                 <!-- Form HTML -->
                 <form method="post">
                     <div class="mb-3">
                         <label for="emailFrm" class="form-label">User Email</label>
                         <input type="email" name="emailFrm" class="form-control" id="emailFrm" value="<?= set_value( 'emailFrm' )?>">
+                        <?= isset( $errorEmail ) ? "<div class='alert alert-danger'>".$errorEmail."</div>" : "" ?>
                     </div>
                     <div class="mb-3">
                         <label for="pwdFrm" class="form-label">User Password</label>
                         <input type="password" name="pwdFrm" class="form-control" id="pwdFrm">
+                        <?= isset( $errorPassword ) ? "<div class='alert alert-danger'>".$errorPassword."</div>" : "" ?>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

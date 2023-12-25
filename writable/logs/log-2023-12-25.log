@@ -1,1 +1,45 @@
 INFO - 2023-12-25 00:45:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 00:52:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 00:52:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 00:52:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-25 01:11:05 --> The namespace delimiter is a backslash (\), not a slash (/). Route handler: "\App\Controllers\DashboardController/index"
+in SYSTEMPATH/Router/Router.php on line 479.
+ 1 SYSTEMPATH/Router/Router.php(479): CodeIgniter\Router\Exceptions\RouterException::forInvalidControllerName('\\App\\Controllers\\DashboardController/index')
+ 2 SYSTEMPATH/Router/Router.php(186): CodeIgniter\Router\Router->checkRoutes('dashboard')
+ 3 SYSTEMPATH/CodeIgniter.php(823): CodeIgniter\Router\Router->handle('dashboard')
+ 4 SYSTEMPATH/CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 5 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2023-12-25 01:23:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 01:23:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 01:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 01:31:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-25 01:31:35 --> "validateUser" is not a valid rule.
+in SYSTEMPATH/Validation/Validation.php on line 319.
+ 1 SYSTEMPATH/Validation/Validation.php(319): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('validateUser')
+ 2 SYSTEMPATH/Validation/Validation.php(197): CodeIgniter\Validation\Validation->processRules('pwdFrm', 'pwdFrm', '1234', [...], [...])
+ 3 SYSTEMPATH/Controller.php(152): CodeIgniter\Validation\Validation->run()
+ 4 APPPATH/Controllers/UserController.php(38): CodeIgniter\Controller->validate([...], [...])
+ 5 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\UserController->index()
+ 6 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2023-12-25 01:37:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 01:38:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 01:38:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 01:38:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 01:38:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-25 01:44:39 --> "beforeInser" is not a valid Model Event callback.
+in SYSTEMPATH/BaseModel.php on line 1603.
+ 1 SYSTEMPATH/BaseModel.php(1603): CodeIgniter\Database\Exceptions\DataException::forInvalidMethodTriggered('beforeInser')
+ 2 SYSTEMPATH/BaseModel.php(785): CodeIgniter\BaseModel->trigger('beforeInsert', [...])
+ 3 SYSTEMPATH/Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 4 SYSTEMPATH/BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 5 APPPATH/Controllers/UserController.php(135): CodeIgniter\BaseModel->save([...])
+ 6 SYSTEMPATH/CodeIgniter.php(942): App\Controllers\UserController->register()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2023-12-25 01:44:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 01:44:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-25 01:45:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

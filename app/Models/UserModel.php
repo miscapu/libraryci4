@@ -29,12 +29,41 @@ class UserModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
+    protected $beforeInsert   = [ 'beforeInsert' ];
     protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
+    protected $beforeUpdate   = [ 'beforeUpdate' ];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+
+    protected function passwordHash( array $data )
+    {
+        if ( isset( $data[ 'data' ][ 'password' ] ) )
+            $data[ 'data' ][ 'password' ]   =   password_hash( $data[ 'data' ][ 'password' ], PASSWORD_DEFAULT );
+
+        return $data;
+    }
+
+    protected function beforeInsert( array $data )
+    {
+        $data   =   $this->passwordHash( $data );
+        $data[ 'data' ][ 'created_at' ] =   date( 'Y-m-d H:i:s' );
+
+        return $data;
+    }
+
+    protected function beforeUpdate( array $data )
+    {
+        $data   =   $this->passwordHash( $data );
+        $data[ 'data' ][ 'updated_at' ] =   date( 'Y-m-d H:i:s' );
+
+        return $data;
+    }
+
+
+
 }
