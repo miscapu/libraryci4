@@ -14,7 +14,20 @@ $this->section( 'content' );
             </div>
 
             <div class="col">
+                <!-- Congratulations -->
+
+                <div class="modal-title py-4">
+                    <?php
+                    $user   =   session()->get( 'firstname' );
+                    ?>
+                    Hello, <?= "<strong>".$user."</strong>, yours users:" ?>
+                </div>
+
+                <!-- Congratulations -->
+
+
                 <!-- Table HTML -->
+
 
                 <table class="table">
                     <thead>
